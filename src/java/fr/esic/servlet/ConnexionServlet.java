@@ -69,8 +69,8 @@ public class ConnexionServlet extends HttpServlet {
                         this.getServletContext().getRequestDispatcher("/WEB-INF/homeConseiller.jsp").forward(request, response);
                         break;
                     case 3:
-                        //this.getServletContext().getRequestDispatcher("/WEB-INF/homeClient.jsp").forward(request, response);
-                        response.sendRedirect("MenuClient");
+                        this.getServletContext().getRequestDispatcher("/WEB-INF/menuClient.jsp").forward(request, response);
+                        //response.sendRedirect("MenuClient");
                         break;
                     default:
                         break;

@@ -78,6 +78,8 @@ public class FormActiverConseiller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        String userId = request.getParameter("userId");
+        int idU = Integer.parseInt(userId);
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
 
@@ -85,12 +87,10 @@ public class FormActiverConseiller extends HttpServlet {
         String password = request.getParameter("mdp");
 
         String statut = request.getParameter("statut");
+        System.out.println("stat: " + statut);
         int stat = Integer.parseInt(statut);
-        
-        System.out.println("stat: " + stat);
 
         Person p = new Person(nom, prenom);
-
         try {
             /* int lastId = UserDao.insertPerson(u);
             u.setIdPerson(lastId);
@@ -100,17 +100,21 @@ public class FormActiverConseiller extends HttpServlet {
             PersonDao.UpdatePerson(p);
 
             Person pe = PersonDao.getPersonByNom(nom);
-            System.out.println("person: " + pe);
+            //System.out.println("person: " + pe);
 
             User c = new User(login, password, pe, stat);
+            c.setId(idU);
+            UserDao.changerStatutConseiller(c);
 
-            if (c.getStatut() == 1) {
+            /*
+            if (c.getStatut() == 0) {//c le nouv statut
                 UserDao.DesactiverConseiller(c);
 
             } else {
                 UserDao.ActiverConseiller(c);
 
             }
+            */
 
             request.getRequestDispatcher("AccueilServlet").forward(request, response);
         } catch (Exception e) {

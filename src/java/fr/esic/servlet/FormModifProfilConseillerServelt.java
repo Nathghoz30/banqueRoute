@@ -78,9 +78,9 @@ public class FormModifProfilConseillerServelt extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
 
-        /*
+        
         String idperson = request.getParameter("idperson");
-        int id = Integer.parseInt(idperson);*/
+        int id = Integer.parseInt(idperson);
         
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
@@ -96,6 +96,8 @@ public class FormModifProfilConseillerServelt extends HttpServlet {
 
         Person p = new Person(nom, prenom, telephone, sexe, dateNaiss, email, adresse);
 
+        p.setId(id);
+        
         try {
             /* int lastId = UserDao.insertPerson(u);
             u.setIdPerson(lastId);

@@ -55,6 +55,7 @@ public class UserDao {
             u.setId(rs.getInt("idutilisateur"));
             u.setLogin(rs.getString("login"));
             u.setMdp(rs.getString("mdp"));
+            u.setStatut(rs.getInt("statut"));
 
             Person p = new Person();
             p.setId(rs.getInt("idperson"));
@@ -110,6 +111,7 @@ public class UserDao {
             u.setId(rs.getInt("idperson"));
             u.setLogin(rs.getString("login"));
             u.setMdp(rs.getString("mdp"));
+            u.setStatut(rs.getInt("statut"));
 
             users.add(u);
         }
@@ -131,21 +133,32 @@ public class UserDao {
         prepare.setString(1, log);
         prepare.execute();
     }
-    
-    
+
+    /*
     public static void DesactiverConseiller(User u) throws SQLException {
-        String sql = "Update utilisateur set statut=0 WHERE login=?";
+        String sql = "Update utilisateur set statut=0 WHERE idutilisateur=?";
         Connection connexion = AccessBd.getConnection();
         PreparedStatement prepare = connexion.prepareStatement(sql);
-        prepare.setString(1, u.getLogin());
+        prepare.setInt(1, u.getId());
         prepare.execute();
     }
-    
+
     public static void ActiverConseiller(User u) throws SQLException {
-        String sql = "Update utilisateur set statut=1 WHERE login=?";
+        String sql = "Update utilisateur set statut=1 WHERE idutilisateur=?";
         Connection connexion = AccessBd.getConnection();
         PreparedStatement prepare = connexion.prepareStatement(sql);
-        prepare.setString(1, u.getLogin());
+        prepare.setInt(1, u.getId());
+        prepare.execute();
+    }
+*/
+    
+
+    public static void changerStatutConseiller(User u) throws SQLException {
+        String sql = "Update utilisateur set statut=? WHERE idutilisateur=?";
+        Connection connexion = AccessBd.getConnection();
+        PreparedStatement prepare = connexion.prepareStatement(sql);
+        prepare.setInt(1, u.getStatut());
+        prepare.setInt(2, u.getId());
         prepare.execute();
     }
 

@@ -13,8 +13,7 @@
     </head>
     <body>
         <%@include file="menuConseiller.jsp" %>
-        <h1>Hello World!</h1>
-
+        
         <div class="container">
             <h1>Bonjour ${user.person.nom} !</h1>
 

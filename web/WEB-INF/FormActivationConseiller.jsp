@@ -67,7 +67,7 @@
                             </div>
                             <div class="mb-3">
                             <label for="Etat" class="my-label">Etat (1-Activer 0-Désactiver)</label>
-                            <input type="text" class="form-control" value="${user.statut}" name="etat">
+                            <input type="text" class="form-control" value="${user.statut}" name="statut">
                         </div>
                         </div>
 
@@ -76,6 +76,7 @@
                             <button type="submit" class="btn btn-primary btn-block">Valider état</button>
                             <button type="reset" class="btn btn-danger btn-block">Annuler</button>
 
+                            <input type="hidden" name="userId" value="${user.id}">
                         </div>
 
                         <p class="text-center text-danger" id="msg"> ${msg} </p>
